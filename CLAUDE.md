@@ -1,0 +1,3 @@
+# rigid-realizations
+
+@AGENTS.md
