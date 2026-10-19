@@ -49,7 +49,7 @@ From the scouting report, not yet re-checked:
 - Some graphs provably have fewer real than complex realizations. The known obstruction applies when the complex
   count is not divisible by 4, so it does not apply to 880.
 
-The full record, with sources, is in [notes/scouting-2026-10-19.md](notes/scouting-2026-10-19.md).
+The full record, with sources, is in [notes/scouting-2026-10-19.md](notes/scouting-2026-10-19.md). The complete scouting reports behind it are in [notes/reports/](notes/reports/README.md).
 
 ## Who else is working on this
 
@@ -83,6 +83,7 @@ coordinate in [st0a](https://github.com/Foundation-0/st0a), and questions go to 
 |---|---|
 | [`NOTE.md`](NOTE.md) | the equations, how solutions are counted, and the certificate format |
 | [`notes/scouting-2026-10-19.md`](notes/scouting-2026-10-19.md) | the research so far, with sources |
+| [`notes/reports/`](notes/reports/README.md) | the complete scouting reports, kept as written, and the fact-check |
 | [`AGENTS.md`](AGENTS.md), [`CLAUDE.md`](CLAUDE.md) | the guide for AI agents |
 | [`.github/`](.github/) | the pull request template and the task issue form |
 
