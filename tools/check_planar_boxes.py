@@ -3,7 +3,16 @@
 import argparse,json,sys
 from fractions import Fraction as Q
 
-def iv(a,b=None):return (Q(a),Q(a if b is None else b))
+def rational(x):
+ if isinstance(x,Q):return x
+ if isinstance(x,bool):raise ValueError('bool is not a rational coordinate')
+ if isinstance(x,int):return Q(x)
+ if isinstance(x,str):return Q(x)
+ if isinstance(x,float):raise ValueError('float is not an exact rational; use string rationals or load JSON with exact decimal parsing')
+ raise TypeError(f'expected rational, got {type(x).__name__}')
+def parse_json_rational(s):return Q(s)
+def load_certificate(fp):return json.load(fp,parse_int=int,parse_float=parse_json_rational)
+def iv(a,b=None):return (rational(a),rational(a if b is None else b))
 def add(a,b):return a[0]+b[0],a[1]+b[1]
 def neg(a):return -a[1],-a[0]
 def sub(a,b):return add(a,neg(b))
@@ -26,7 +35,7 @@ def inverse(a):
  return [row[n:]for row in r]
 
 def check(d):
- n=d['n'];edges=d['edges'];lengths=[Q(x)for x in d['lengths']];pins=d['pinned'];boxes=d['boxes']
+ n=d['n'];edges=d['edges'];lengths=[rational(x)for x in d['lengths']];pins=d['pinned'];boxes=d['boxes']
  if type(n)is not int or n<3 or d['dimension']!=2:raise ValueError('only planar systems supported')
  if len(edges)!=2*n-3 or len(lengths)!=len(edges)or any(x<=0 for x in lengths):raise ValueError('bad edge/length shape')
  keys=[tuple(sorted(e))for e in edges]
@@ -61,7 +70,7 @@ def check(d):
  return {'certified_non_degenerate_boxes':len(boxes),'status':'lower bound only; independent implementation and source review pending'}
 def main():
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('certificate');a=p.parse_args()
- try:print(json.dumps(check(json.load(open(a.certificate)))))
+ try:print(json.dumps(check(load_certificate(open(a.certificate)))))
  except (ValueError,KeyError,TypeError,OSError,IndexError,ZeroDivisionError)as e:print(e,file=sys.stderr);return 1
  return 0
 if __name__=='__main__':sys.exit(main())
