@@ -8,10 +8,13 @@ def rational(x):
  if isinstance(x,bool):raise ValueError('bool is not a rational coordinate')
  if isinstance(x,int):return Q(x)
  if isinstance(x,str):return Q(x)
- if isinstance(x,float):raise ValueError('float is not an exact rational; use string rationals or load JSON with exact decimal parsing')
+ if isinstance(x,float):
+  if x!=x or x in (float('inf'),float('-inf')):raise ValueError(f'non-finite number {x!r} is not a rational')
+  raise ValueError('float is not an exact rational; use string rationals or load JSON with exact decimal parsing')
  raise TypeError(f'expected rational, got {type(x).__name__}')
 def parse_json_rational(s):return Q(s)
-def load_certificate(fp):return json.load(fp,parse_int=int,parse_float=parse_json_rational)
+def reject_json_constant(name):raise ValueError(f'non-finite JSON number {name} is not allowed in a certificate')
+def load_certificate(fp):return json.load(fp,parse_int=int,parse_float=parse_json_rational,parse_constant=reject_json_constant)
 def iv(a,b=None):return (rational(a),rational(a if b is None else b))
 def add(a,b):return a[0]+b[0],a[1]+b[1]
 def neg(a):return -a[1],-a[0]
@@ -38,8 +41,9 @@ def check(d):
  n=d['n'];edges=d['edges'];lengths=[rational(x)for x in d['lengths']];pins=d['pinned'];boxes=d['boxes']
  if type(n)is not int or n<3 or d['dimension']!=2:raise ValueError('only planar systems supported')
  if len(edges)!=2*n-3 or len(lengths)!=len(edges)or any(x<=0 for x in lengths):raise ValueError('bad edge/length shape')
+ if any(type(e)is not list or len(e)!=2 or any(type(v)is not int or not 1<=v<=n for v in e)or e[0]==e[1]for e in edges):raise ValueError('invalid edges')
  keys=[tuple(sorted(e))for e in edges]
- if any(len(e)!=2 or e[0]==e[1]or any(type(v)is not int or not 1<=v<=n for v in e)for e in edges)or len(set(keys))!=len(keys):raise ValueError('invalid edges')
+ if len(set(keys))!=len(keys):raise ValueError('invalid edges')
  if len(pins)!=2 or pins[0]==pins[1]or tuple(sorted(pins))not in keys:raise ValueError('invalid pinned edge')
  pin_index=keys.index(tuple(sorted(pins)));L=lengths[pin_index];free=[i for i in range(1,n+1)if i not in pins];D=2*len(free)
  if d['unknowns']!=[f'{axis}{i}'for i in free for axis in ('x','y')]:raise ValueError('unknown ordering differs')

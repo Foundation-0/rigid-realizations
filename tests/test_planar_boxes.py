@@ -26,4 +26,29 @@ class Controls(unittest.TestCase):
   self.assertEqual(m.check(d)['certified_non_degenerate_boxes'],2)
  def test_float_json_numbers_rejected_without_exact_loader(self):
   with self.assertRaises(ValueError):m.check(json.loads(TRI_NUMERIC))
+ def test_non_finite_json_constants_rejected_on_load(self):
+  for c in ('NaN','Infinity','-Infinity'):
+   for field,text in (('length',TRI_NUMERIC.replace('"lengths":["6","5","5"]','"lengths":[6,'+c+',5]')),('box endpoint',TRI_NUMERIC.replace('[2.9,3.1]','['+c+',3.1]',1))):
+    with self.subTest(constant=c,field=field):
+     self.assertNotEqual(text,TRI_NUMERIC)
+     with self.assertRaisesRegex(ValueError,'non-finite JSON number'):m.load_certificate(io.StringIO(text))
+ def test_non_finite_values_rejected_by_check(self):
+  for v in (float('nan'),float('inf'),float('-inf'),'NaN','Infinity','-Infinity'):
+   with self.subTest(value=v):
+    d=copy.deepcopy(EX);d['lengths'][1]=v
+    with self.assertRaises(ValueError):m.check(d)
+    d=copy.deepcopy(EX);d['boxes'][0][0][1]=v
+    with self.assertRaises(ValueError):m.check(d)
+ def test_zero_length_edge_rejected(self):
+  d=copy.deepcopy(EX);d['lengths'][2]='0'
+  with self.assertRaisesRegex(ValueError,'bad edge/length shape'):m.check(d)
+ def test_bad_edges_rejected(self):
+  for edges in ([[1,2],[1,3],[2,4]],[[1,2],[1,3],[0,3]],[[1,2],[1,3],[3,3]],[[1,2],[1,3],[2,3,1]],[[1,2],[1,3],[2]],[[1,2],[1,3],[1,3]],[[1,2],[1,3],[2,'3']],[[1,2],[1,3],[2,3.0]],[[1,2],[1,3],[True,3]],[[1,2],[1,3],23]):
+   with self.subTest(edges=edges):
+    with self.assertRaisesRegex(ValueError,'invalid edges'):m.check(dict(EX,edges=edges))
+ def test_wrong_edge_count_rejected(self):
+  for k in (2,4):
+   edges=[[1,2],[1,3],[2,3],[1,2]][:k];lengths=['6','5','5','6'][:k]
+   with self.subTest(count=k):
+    with self.assertRaisesRegex(ValueError,'bad edge/length shape'):m.check(dict(EX,edges=edges,lengths=lengths))
 if __name__=='__main__':unittest.main()
