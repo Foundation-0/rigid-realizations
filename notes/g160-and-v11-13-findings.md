@@ -13,7 +13,7 @@
 ## 2. Planar n = 11, 12, 13 lower bounds and L2288 (Issue #4)
 - **Conditional glued planar lower bounds (≥; Prism_6 certificate not yet in repo; L880 certificate pending independent verification)**:
   - Gluing Prism_6 (all 24 real known from Borcea–Streinu 2004; no certificate in this repo) onto the claimed L880 certificate (880 / 880 if independently verified) along the shared Heronian base triangle {2, 3, 7} would give r_2(13) ≥ 10,560 once the Prism_6 certificate is committed and verified (the bound implied by Bartzos et al.'s formula is 6,880).
-  - Similarly, gluing Prism_6 onto L344 would give r_2(12) ≥ 4,128 once the Prism_6 certificate exists.
+  - Similarly, gluing Prism_6 onto L344 along an L344 triangle would give r_2(12) ≥ 4,128 once a Prism_6 certificate exists on such a triangle (not the L880-base Prism_6 triangle in this repo's spec).
   - A Henneberg-I step on L880 gives r_2(11) ≥ 1,760 when the L880 certificate is accepted.
 - **L2288 monodromy (numerical, not reproduced — no driver or data in repo)**:
   - For the maximal 11-vertex graph L2288 (c_2 = 2,288, GKT integer code 18120782205838348), exploratory runs used isotropic coordinates; there is no committed monodromy driver in this repository (`scripts/l2288_lib.py` is library-only).

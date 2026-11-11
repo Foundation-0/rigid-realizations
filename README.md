@@ -13,7 +13,7 @@ Part of Foundation0's physics and mathematics work ([physics0](https://github.co
 | Graph | Dimension | Vertices (n) | Complex Count | Real count | Status | Notes |
 |---|---|---|---|---|---|---|
 | Prism_6 | 2D | 6 | 24 | 24 (all-real known: Borcea–Streinu 2004) | certificate not yet in repo | New lengths sharing L880's base triangle |
-| L136 | 2D | 8 | 136 | 136 (known: Bartzos et al. 2018) | certificate not yet in repo | New lengths, not Bartzos's |
+| L136 | 2D | 8 | 136 | not certified (spec targets c_2=136 at repo rational lengths) | certificate not yet in repo | Bartzos et al. 2018: r_2=136 at their lengths; repo lengths differ (see `certify_planar_suite` spec) |
 | L344 | 2D | 9 | 344 | 344 (known: Bartzos et al. 2018) | certificate not yet in repo | Bartzos et al.'s lengths |
 | L880 | 2D | 10 | 880 | 880 | claimed (pending independent verification) | Computer-assisted certificate in bundle; φ_10 = 1 if verified |
 | L880 (Bartzos) | 2D | 10 | 880 | ≥ 868 | claimed (pending independent verification) | Certified lower bound at unmodified Bartzos et al. lengths |
@@ -21,7 +21,7 @@ Part of Foundation0's physics and mathematics work ([physics0](https://github.co
 
 ### Glued Planar Lower Bounds (Claimed)
 - r_2(11) >= 1,760 (Henneberg-I step on L880; conditional on L880 certificate)
-- r_2(12) >= 4,128 (L344 glued with Prism_6); needs the Prism_6 certificate
+- r_2(12) >= 4,128 (L344 glued with Prism_6 on an L344 triangle); needs a Prism_6 certificate built on an L344 face (the committed Prism_6 triangle is from L880 and is not similar to either L344 triangle)
 - r_2(13) >= 10,560 (L880 glued with Prism_6 along the shared triangle {2, 3, 7}; needs the Prism_6 certificate. The bound implied by Bartzos et al.'s formula is 6,880.)
 
 ## Verification Instructions
@@ -67,7 +67,7 @@ python3 -m unittest discover -s rigid_realizations_l880_pr_bundle/tests -v
 | NOTE.md | Equations, solution counting, and certificate format |
 | rigid_realizations_l880_pr_bundle/ | Complete L880 bundle with paper, results, scripts, and tests |
 | scripts/verify_note_schema_2d.py | Pure-stdlib Krawczyk verifier for 2D NOTE.md JSON certificates |
-| scripts/certify_planar_suite.py | For Prism_6, L136, and L344: verify each `rigid_realizations_l880_pr_bundle/results/{name}_{count}_cert.json` when present; exit nonzero if any expected file is missing (does not write JSON; none committed). Expected Prism_6 path: `prism_6_24_cert.json`. |
+| scripts/certify_planar_suite.py | For Prism_6, L136, and L344: verify each `rigid_realizations_l880_pr_bundle/results/{name}_{count}_cert.json` when present; exit nonzero if any expected file is missing, metadata mismatches spec, pin is invalid, or count is partial (does not write JSON; none committed). Override results dir with `PLANAR_SUITE_RESULTS_DIR`. |
 | notes/l880-880-and-868-diagnostics.md | Technical note on L880 parameters, fold walls, and Maple filter analysis |
 | notes/g160-and-v11-13-findings.md | Handoff note for G160 and planar n=11..13 bounds |
 | notes/literature-2018-2026.md | Literature audit through 2026 |
