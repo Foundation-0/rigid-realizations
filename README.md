@@ -74,6 +74,12 @@ python3 -m unittest discover -s rigid_realizations_l880_pr_bundle/tests -v
 | AGENTS.md, CLAUDE.md | Guides for AI agents |
 | .github/ | Pull request template and issue forms |
 
+## Credit
+
+Directed by Ahraz Arifuddin
+
+Researched and verified by different model families across Gemini, Claude, Grok, OpenAI, and Muse
+
 ## Licence
 
 Apache License 2.0 (see [LICENSE](LICENSE)), as for Foundation0's other repositories.
