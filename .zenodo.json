@@ -5,9 +5,10 @@
         }
     ],
     "title": "rigid-realizations",
-    "description": "<p>This repository studies how many real realizations minimally rigid graphs can reach in the plane and in space.</p><p>It claims, pending independent verification, a certificate that all 880 realizations of the 10-vertex graph L880 are real (r_2(10) = c_2(10) = 880).</p><p>Committed baseline certificates at Bartzos et al.'s published lengths support r_2 >= 868 in the plane and r_3 >= 132 for G160 in 3D, also pending independent verification.</p><p>Directed by Ahraz Arifuddin</p><p>Researched and verified by different model families across Gemini, Claude, Grok, OpenAI, and Muse</p>",
+    "description": "<p>This repository studies how many real realizations minimally rigid graphs can reach in the plane and in space.</p><p>It claims, pending independent verification, a certificate that all 880 realizations of the 10-vertex graph L880 are real (r_2(10) = c_2(10) = 880).</p><p>Committed baseline certificates at Bartzos et al.'s published lengths support r_2 >= 868 in the plane and r_3 >= 132 for G160 in 3D, also pending independent verification.</p><p>The paper (the .tex and PDF in rigid_realizations_l880_pr_bundle/paper/) is licensed under CC BY 4.0. The code and certificates stay Apache-2.0 under LICENSE.</p><p>Directed by Ahraz Arifuddin</p><p>Researched and verified by different model families across Gemini, Claude, Grok, OpenAI, and Muse</p>",
     "upload_type": "software",
     "license": "Apache-2.0",
+    "access_right": "open",
     "keywords": [
         "computer-assisted-proof",
         "foundation0",
