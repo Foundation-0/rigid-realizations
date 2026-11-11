@@ -13,7 +13,7 @@ Part of Foundation0's physics and mathematics work ([physics0](https://github.co
 | Graph | Dimension | Vertices (n) | Complex Count | Real count | Status | Notes |
 |---|---|---|---|---|---|---|
 | Prism_6 | 2D | 6 | 24 | 24 (all-real known: Borcea–Streinu 2004) | certificate not yet in repo | New lengths sharing L880's base triangle |
-| L136 | 2D | 8 | 136 | not certified (spec targets c_2=136 at repo rational lengths) | certificate not yet in repo | Bartzos et al. 2018: r_2=136 at their lengths; repo lengths differ (see `certify_planar_suite` spec) |
+| L136 | 2D | 8 | 136 | not certified (spec targets r_2 = 136, all real, at the repo's rational lengths) | certificate not yet in repo | Bartzos et al. 2018: r_2=136 at their lengths; repo lengths differ (see `certify_planar_suite` spec) |
 | L344 | 2D | 9 | 344 | 344 (known: Bartzos et al. 2018) | certificate not yet in repo | Bartzos et al.'s lengths |
 | L880 | 2D | 10 | 880 | 880 | claimed (pending independent verification) | Computer-assisted certificate in bundle; φ_10 = 1 if verified |
 | L880 (Bartzos) | 2D | 10 | 880 | ≥ 868 | claimed (pending independent verification) | Certified lower bound at unmodified Bartzos et al. lengths |
@@ -21,7 +21,7 @@ Part of Foundation0's physics and mathematics work ([physics0](https://github.co
 
 ### Glued Planar Lower Bounds (Claimed)
 - r_2(11) >= 1,760 (Henneberg-I step on L880; conditional on L880 certificate)
-- r_2(12) >= 4,128 (L344 glued with Prism_6 on an L344 triangle); needs a Prism_6 certificate built on an L344 face (the committed Prism_6 triangle is from L880 and is not similar to either L344 triangle)
+- r_2(12) >= 4,128 (L344 glued with Prism_6 on an L344 triangle); needs a Prism_6 certificate built on an L344 face (neither triangle of the repo's Prism_6 spec, including the L880 base triangle, is similar to either L344 triangle)
 - r_2(13) >= 10,560 (L880 glued with Prism_6 along the shared triangle {2, 3, 7}; needs the Prism_6 certificate. The bound implied by Bartzos et al.'s formula is 6,880.)
 
 ## Verification Instructions
