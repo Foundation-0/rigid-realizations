@@ -43,16 +43,16 @@ python3 rigid_realizations_l880_pr_bundle/scripts/verify_capco_laman.py
 # Verify Bartzos baselines (L880 ≥ 868 and G160 ≥ 132 certified lower bounds)
 python3 rigid_realizations_l880_pr_bundle/scripts/verify_bartzos_baselines.py
 
-# For Prism_6, L136, L344: verify each results/{name}_{count}_cert.json when present; if missing, print path only
+# For Prism_6, L136, L344: verify each results/{name}_{count}_cert.json when present; exit 1 if any are missing
 python3 scripts/certify_planar_suite.py
 
-# Verify 2D NOTE.md schema certificates when present
-python3 scripts/verify_note_schema_2d.py rigid_realizations_l880_pr_bundle/results/prism_6_24_cert.json
-python3 scripts/verify_note_schema_2d.py rigid_realizations_l880_pr_bundle/results/l136_136_cert.json
-python3 scripts/verify_note_schema_2d.py rigid_realizations_l880_pr_bundle/results/l344_344_cert.json
+# Integrity manifests (from repository root)
+sha256sum -c SHA256SUMS
+sha256sum -c rigid_realizations_l880_pr_bundle/SHA256SUMS
 
-# Run unit test suite
-python3 -m unittest discover -s rigid_realizations_l880_pr_bundle/tests
+# Run unit tests (repository root scripts + bundle verifiers)
+python3 -m unittest discover -s tests -v
+python3 -m unittest discover -s rigid_realizations_l880_pr_bundle/tests -v
 ```
 
 ## What is known
@@ -67,7 +67,7 @@ python3 -m unittest discover -s rigid_realizations_l880_pr_bundle/tests
 | NOTE.md | Equations, solution counting, and certificate format |
 | rigid_realizations_l880_pr_bundle/ | Complete L880 bundle with paper, results, scripts, and tests |
 | scripts/verify_note_schema_2d.py | Pure-stdlib Krawczyk verifier for 2D NOTE.md JSON certificates |
-| scripts/certify_planar_suite.py | For Prism_6, L136, and L344: verify each `rigid_realizations_l880_pr_bundle/results/{name}_{count}_cert.json` when present; if missing, print the path only (does not write JSON; none committed). |
+| scripts/certify_planar_suite.py | For Prism_6, L136, and L344: verify each `rigid_realizations_l880_pr_bundle/results/{name}_{count}_cert.json` when present; exit nonzero if any expected file is missing (does not write JSON; none committed). Expected Prism_6 path: `prism_6_24_cert.json`. |
 | notes/l880-880-and-868-diagnostics.md | Technical note on L880 parameters, fold walls, and Maple filter analysis |
 | notes/g160-and-v11-13-findings.md | Handoff note for G160 and planar n=11..13 bounds |
 | notes/literature-2018-2026.md | Literature audit through 2026 |
