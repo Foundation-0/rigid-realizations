@@ -48,7 +48,7 @@ python3 scripts/certify_planar_suite.py
 
 # Integrity manifests (from repository root)
 sha256sum -c SHA256SUMS
-sha256sum -c rigid_realizations_l880_pr_bundle/SHA256SUMS
+(cd rigid_realizations_l880_pr_bundle && sha256sum -c SHA256SUMS)
 
 # Run unit tests (repository root scripts + bundle verifiers)
 python3 -m unittest discover -s tests -v
@@ -83,3 +83,5 @@ Researched and verified by different model families across Gemini, Claude, Grok,
 ## Licence
 
 Apache License 2.0 (see [LICENSE](LICENSE)), as for Foundation0's other repositories.
+
+The paper (the .tex and PDF in `rigid_realizations_l880_pr_bundle/paper/`) is licensed under CC BY 4.0. The code and certificates stay Apache-2.0 under LICENSE.
