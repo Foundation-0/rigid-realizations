@@ -1,8 +1,21 @@
 #!/usr/bin/env python3
 """Zero-float pure-stdlib Krawczyk verifier for 2D NOTE.md certificate JSON files."""
+import importlib.util
 import json
 import sys
 from fractions import Fraction
+from pathlib import Path
+
+
+def combinatorial_c2(edges_1based):
+    """c_2(G) via Capco et al. bigraph recurrence (same as verify_capco_laman.compute_c2)."""
+    capco_path = Path(__file__).resolve().parent.parent / "rigid_realizations_l880_pr_bundle" / "scripts" / "verify_capco_laman.py"
+    spec = importlib.util.spec_from_file_location("verify_capco_laman", capco_path)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"Cannot load Capco verifier from {capco_path}")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod.compute_c2(edges_1based)
 
 
 def verify_laman(n, edges):
@@ -51,6 +64,15 @@ def verify_certificate(path):
         raise ValueError("This verifier checks 2D edge-pinned NOTE.md certificates.")
     n = int(cert["n"])
     edges = [tuple(e) for e in cert["edges"]]
+    if "complex_count" not in cert:
+        raise ValueError("Certificate missing complex_count.")
+    complex_count = int(cert["complex_count"])
+    claimed = int(cert["claimed_real_count"])
+    if claimed > complex_count:
+        raise ValueError(f"claimed_real_count {claimed} exceeds complex_count {complex_count}")
+    c2 = combinatorial_c2([[u, v] for u, v in edges])
+    if complex_count != c2:
+        raise ValueError(f"complex_count {complex_count} disagrees with combinatorial c_2(G)={c2}")
     verify_laman(n, edges)
     lengths = [Fraction(s) for s in cert["lengths"]]
     if any(ell <= 0 for ell in lengths):
@@ -70,8 +92,10 @@ def verify_certificate(path):
     rem_indices = [k for k in range(len(edges)) if k != pin_idx]
     dim = 2 * (n - 2)
     boxes = cert["boxes"]
-    if len(boxes) != int(cert["claimed_real_count"]):
+    if len(boxes) != claimed:
         raise ValueError("Box count mismatch with claimed_real_count.")
+    if len(boxes) > complex_count:
+        raise ValueError(f"{len(boxes)} boxes exceed complex_count {complex_count}")
 
     parsed_boxes = []
     for box in boxes:

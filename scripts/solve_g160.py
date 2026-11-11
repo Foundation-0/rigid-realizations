@@ -1,4 +1,4 @@
-"""3D evaluator, Newton polisher, and complex homotopy tracker for 8-vertex G160."""
+"""3D G160 squared-distance evaluator and damped Newton polisher (no homotopy tracker or driver in this file)."""
 import numpy as np
 
 EDGES_G160 = [

@@ -1,4 +1,4 @@
-"""Isotropic 16x16 evaluator and Newton polisher for 11-vertex L2288 (GKT code 18120782205838348)."""
+"""Isotropic 16x16 evaluator and Newton polisher for 11-vertex L2288 (GKT code 18120782205838348); library only, no monodromy driver or CLI in this repository."""
 import numpy as np
 
 
