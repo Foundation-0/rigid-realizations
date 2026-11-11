@@ -9,7 +9,7 @@
 
 ## Exact Rational Framework for $r_2(L_{880}) = 880$
 
-On vertex set $V = \{1,\dots,10\}$ with edge list `[(1,4), (1,8), (1, 10), (2,3), (2,7), (2,10), (3,7), (3,9), (4,8), (4,9), (5,7), (5,8), (5,10), (6,7), (6,8), (6,9), (9,10)]`, the pinned Heronian rational triangle is:
+On vertex set $V = \{1,\dots,10\}$ with edge list `[(1,4), (1,8), (1,10), (2,3), (2,7), (2,10), (3,7), (3,9), (4,8), (4,9), (5,7), (5,8), (5,10), (6,7), (6,8), (6,9), (9,10)]`, the pinned Heronian rational triangle is:
 
 - $v_7 = (0, 0)$
 - $v_2 = \left(\frac{78200128123}{78175010000},\, 0\right)$

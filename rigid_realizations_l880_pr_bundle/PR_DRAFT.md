@@ -1,6 +1,6 @@
 # Pull Request Draft for `Foundation-0/rigid-realizations`
 
-**Source PR (#13):** branch `carbon-f0-run1`, title `crude research dump` ([PR #13](https://github.com/Foundation-0/rigid-realizations/pull/13)).
+**Source PR:** [#13](https://github.com/Foundation-0/rigid-realizations/pull/13), branch `carbon-f0-run1`.
 
 **This wording PR:** branch `grok/rr13-wording`, title `Wording fixes for L880 certification bundle (built on #13)`.
 
