@@ -1,7 +1,10 @@
 # Equations and certificates
 
 This note sets out the equations this project solves and the file format for a claimed count of real
-realizations. No certificate exists yet.
+realizations. Committed certificates live under `rigid_realizations_l880_pr_bundle/results/` (L880 at 880/880,
+Bartzos L880 baseline ≥868, G160 baseline ≥132), checked by the bundle verifiers. Certificates for Prism_6,
+L136, and L344 are not yet committed; `scripts/certify_planar_suite.py` expects them at
+`rigid_realizations_l880_pr_bundle/results/prism_6_24_cert.json`, `l136_136_cert.json`, and `l344_344_cert.json` when present.
 
 ## The equations in the plane
 

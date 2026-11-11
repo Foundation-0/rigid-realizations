@@ -1,0 +1,43 @@
+# Pull Request Draft for `Foundation-0/rigid-realizations`
+
+**Source PR:** [#13](https://github.com/Foundation-0/rigid-realizations/pull/13), branch `carbon-f0-run1`.
+
+**This wording PR:** branch `grok/rr13-wording`, title `Wording fixes for L880 certification bundle (built on #13)`.
+
+## PR Description Body
+
+### Summary
+
+This pull request addresses this repository's headline open question with a **claimed** certificate (pending independent verification) that all $880$ complex planar realizations of the maximal $10$-vertex Laman graph $L_{880}$ ([OEIS A306420](https://oeis.org/A306420), encoding `4778440734593`) can be simultaneously real---so $r_2(L_{880}) = r_2(10) = c_2(10) = 880$ and $\varphi_{10} = 1$, the smallest case of Open Problem 5 in [Grasegger, Koutschan & Tsigaridas (Exp. Math. 2020; arXiv:1710.08237)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7324120/). Before this work, [Bartzos, Emiris, Legerský & Tsigaridas (arXiv:1811.12800)](https://arxiv.org/pdf/1811.12800) had Maple-certified $r_2(L_{880}) \ge 860$ and reported $868$ real solutions numerically via `phcpy`; [Grasegger (2025, arXiv:2502.04736)](https://arxiv.org/html/2502.04736v1) cites $\approx 2.378^n$ for real planar growth from Bartzos et al.\ rather than certifying $868$ for $L_{880}$.
+
+By the Fan Construction Theorem, gluing $k$ copies of our rational $L_{880}$ framework along its Heronian rational base triangle $\{2,3,7\}$ yields $r_2(n) \ge 2^{(n-3)\bmod 7} \cdot 2 \cdot 440^{\lfloor (n-3)/7 \rfloor}$ for all $n \ge 3$, raising the certified asymptotic lower bound $\liminf r_2(n)^{1/n}$ from $430^{1/7} \approx 2.377989$ to $440^{1/7} \approx 2.385811$ (about $+0.33\%$ on the base).
+
+Prism$_6$, $L_{136}$, and $L_{344}$ total reality is known from the literature (Borcea–Streinu 2004; Bartzos et al. 2018); this repository does not yet commit certificates for those graphs. Using $80$-bit exact rational base-height enclosures, the bundle also claims (pending independent verification):
+- **`[computer-assisted, pending independent verification]`** $L_{880}$ unmodified baseline ($r_2 \ge 868$): $434$ disjoint half-boxes (at least $868$ realizations modulo $SE(2)$). The certificate does not re-run Bartzos et al.'s Maple pipeline.
+- **`[computer-assisted, pending independent verification]`** $G_{160}$ unmodified 3D baseline ($r_3 \ge 132$): $66$ chiral boxes in $\mathbb{R}^{15}$ whose $z \mapsto -z$ reflections are pairwise disjoint---a lower bound for this repository's open question on $r_3(G_{160})$ at Bartzos et al.'s lengths.
+
+### Verification & Negative Controls
+
+All proof verifiers run on Python's standard library with zero floating-point operations:
+
+- `python3 scripts/verify_l880_krawczyk.py` (`0.35s`): verifies exact Heronian base distances, orientation $> 0$, pairwise disjointness across all $\binom{440}{2}$ box pairs ($\min \|c^{(a)} - c^{(b)}\|_\infty \approx 0.084374 > 2 \cdot 2^{-26}$), and Krawczyk contraction ($\max \kappa \approx 0.00024962 < 1$).
+- `python3 scripts/verify_l880_independent.py` (`4.8s`): independent zero-shared-code `RatInterval` verifier plus $2^{10}$-subset Laman sparsity check.
+- `python3 scripts/verify_capco_laman.py` (`1.1s`): standalone implementation of Theorem 4.7 of [Capco et al. (2018)](https://arxiv.org/html/1701.05500v2) proving combinatorially that $c_2(L_{880}) = 880$.
+- `python3 scripts/verify_bartzos_baselines.py` (`6.5s`): verifies the Bartzos $L_{880}$ ($\ge 868$) and $G_{160}$ ($\ge 132$) baseline certificates.
+- `python3 -m unittest discover -s tests -v` (`12.5s`): runs all $4$ positive verifiers and $6$ must-fail negative controls.
+
+### Credit
+
+Directed by Ahraz Arifuddin
+
+Researched and verified by different model families across Gemini, Claude, Grok, OpenAI, and Muse
+
+## Quick Git Commands to Apply Locally
+
+```bash
+git clone git@github.com:Foundation-0/rigid-realizations.git
+cd rigid-realizations
+git checkout grok/rr13-wording
+shasum -a 256 -c rigid_realizations_l880_pr_bundle/SHA256SUMS
+python3 -m unittest discover -s rigid_realizations_l880_pr_bundle/tests -v
+```
