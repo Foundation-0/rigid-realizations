@@ -8,6 +8,8 @@ For an 8-vertex graph (L136) and a 9-vertex graph (L344), the literature gives b
 
 Part of Foundation0's physics and mathematics work ([physics0](https://github.com/Foundation-0/physics0) and [math0](https://github.com/Foundation-0/math0)). It began in Foundation0's [scouting of 18-19 October 2026](https://github.com/Foundation-0/f0/tree/main/deep-fields). Related projects: [incentre-lattices](https://github.com/Foundation-0/incentre-lattices) (rigidity) and [point-charges](https://github.com/Foundation-0/point-charges) (certified counts of solutions).
 
+The L880 paper in the bundle is reserved on Zenodo at [https://doi.org/10.5281/zenodo.24145786](https://doi.org/10.5281/zenodo.24145786). Cite it as: Arifuddin, A. (2026). *All 880 Complex Realizations of the Maximal 10-Vertex Laman Graph Can Be Real*. Zenodo. [https://doi.org/10.5281/zenodo.24145786](https://doi.org/10.5281/zenodo.24145786).
+
 ## Results Table
 
 | Graph | Dimension | Vertices (n) | Complex Count | Real count | Status | Notes |
