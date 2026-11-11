@@ -1,7 +1,7 @@
 # Technical Handoff Note: G160 (3D) and Planar Lower Bounds for n = 11, 12, 13
 
 ## 1. G160 (n = 8, 3D, Issue #3) Findings and Obstructions
-- **Certified Baseline**: Certified 132 / 160 real spatial realizations (66 chiral real branches) at Bartzos et al.'s rational bar lengths via 80-bit rational base-height Krawczyk enclosure (`max kappa = 0.000499 < 1`).
+- **Certified Baseline**: Certifies at least 132 real spatial realizations (66 chiral branches, 132 with z-reflection) at Bartzos et al.'s rational bar lengths via 80-bit rational base-height Krawczyk enclosure (`max kappa = 0.000499 < 1`); does not prove `r_3(G160) = 132` or total reality among all 160 complex embeddings.
 - **Monodromy Spectrum**: Monodromy in 3D coordinates confirms c_3(G160) = 160 (80 chiral branches). At Bartzos's point (L spanning [0.56, 2.09]), the 14 non-real chiral branches split bimodally:
   - 3 near-real conjugate pairs with |Im| in {0.4725, 1.0806, 1.3896}
   - 4 deep conjugate pairs with |Im| in {8.3880, 8.8343, 12.8176, 13.2829}

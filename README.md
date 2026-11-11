@@ -4,7 +4,7 @@
 
 A framework is a set of points joined by bars of fixed length. A minimally rigid framework holds its shape, but flexes if any one bar is removed. In the plane its graph is called a Laman graph. With the lengths given, it can be built in only finitely many ways, not counting moving or turning it as a whole. These ways are the solutions of a system of polynomial equations. Counting them with complex numbers gives an upper bound, but only the real solutions are shapes that can actually be built.
 
-For an 8-vertex graph (L136) and a 9-vertex graph (L344), bar lengths are known for which every solution is real. For the 10-vertex graph L880, which has 880 complex solutions, 860 had been certified in prior literature. This project certifies all 880 real realizations of L880, matching its complex bound (r_2(10) = c_2(10) = 880) and raising the asymptotic planar lower bound from 430^(1/7) ≈ 2.377989^n to 440^(1/7) ≈ 2.385811^n, along with certified baseline suites in 2D and 3D with zero-float verifiers.
+For an 8-vertex graph (L136) and a 9-vertex graph (L344), bar lengths are known for which every solution is real. For the 10-vertex graph L880, which has 880 complex solutions, prior literature had Maple-certified r_2(L880) ≥ 860 and reported 868 solutions numerically via homotopy continuation. This project certifies all 880 real realizations of L880 at new rational lengths, so r_2(L880) = r_2(10) = c_2(10) = 880 and φ_10 = 1 (the smallest case of Open Problem 5 in Grasegger, Koutschan and Tsigaridas, 2020). That result raises the certified asymptotic planar lower bound liminf r_2(n)^(1/n) from 430^(1/7) ≈ 2.377989 to 440^(1/7) ≈ 2.385811 (about +0.33% on the base). Baseline certificates at Bartzos et al.'s published lengths give r_2 ≥ 868 in the plane and r_3 ≥ 132 for G160 in 3D, checked by zero-float verifiers.
 
 Part of Foundation0's physics and mathematics work ([physics0](https://github.com/Foundation-0/physics0) and [math0](https://github.com/Foundation-0/math0)). It began in Foundation0's [scouting of 18-19 October 2026](https://github.com/Foundation-0/f0/tree/main/deep-fields). Related projects: [incentre-lattices](https://github.com/Foundation-0/incentre-lattices) (rigidity) and [point-charges](https://github.com/Foundation-0/point-charges) (certified counts of solutions).
 
@@ -15,9 +15,9 @@ Part of Foundation0's physics and mathematics work ([physics0](https://github.co
 | Prism_6 | 2D | 6 | 24 | 24 | claimed | Shared Heronian rational base triangle with L880 |
 | L136 | 2D | 8 | 136 | 136 | claimed | All real certified in NOTE.md schema |
 | L344 | 2D | 9 | 344 | 344 | claimed | All real certified at exact rational bar lengths of Bartzos et al. (p. 16) |
-| L880 | 2D | 10 | 880 | 880 | claimed | All real certified (r_2(10) = c_2(10) = 880), raising asymptotic planar lower bound from 430^(1/7) ≈ 2.377989^n to 440^(1/7) ≈ 2.385811^n |
-| L880 (Bartzos) | 2D | 10 | 880 | 868 | claimed | Unmodified rational bar lengths of Bartzos et al. |
-| G160 | 3D | 8 | 160 | 132 | claimed | Unmodified rational bar lengths of Bartzos et al. |
+| L880 | 2D | 10 | 880 | 880 | claimed | All real certified (computer-assisted); r_2(10) = c_2(10) = 880, φ_10 = 1 |
+| L880 (Bartzos) | 2D | 10 | 880 | ≥ 868 | claimed | Certified lower bound at unmodified Bartzos et al. lengths |
+| G160 | 3D | 8 | 160 | ≥ 132 | claimed | Certified lower bound at unmodified Bartzos et al. lengths |
 
 ### Glued Planar Lower Bounds (Claimed)
 - r_2(11) >= 1,760 (Henneberg-I step on L880)
@@ -40,7 +40,7 @@ python3 rigid_realizations_l880_pr_bundle/scripts/verify_l880_independent.py
 # Verify Laman condition and Capco properties
 python3 rigid_realizations_l880_pr_bundle/scripts/verify_capco_laman.py
 
-# Verify Bartzos baselines (L880 868 real and G160 132 real)
+# Verify Bartzos baselines (L880 ≥ 868 and G160 ≥ 132 certified lower bounds)
 python3 rigid_realizations_l880_pr_bundle/scripts/verify_bartzos_baselines.py
 
 # Certify deterministic planar suite (Prism_6: 24/24, L136: 136/136, L344: 344/344)
@@ -69,7 +69,7 @@ python3 -m unittest discover -s rigid_realizations_l880_pr_bundle/tests
 | scripts/verify_note_schema_2d.py | Pure-stdlib Krawczyk verifier for 2D NOTE.md JSON certificates |
 | scripts/certify_planar_suite.py | Deterministic generator and certifier for Prism_6, L136, and L344 |
 | notes/l880-880-and-868-diagnostics.md | Technical note on L880 parameters, fold walls, and Maple filter analysis |
-| notes/g160-and-v11-13-findings.md | Handoff note for G160 and planar n=11..13 bounds |
+| notes/gg160-and-v11-13-findings.mdd | Handoff note for G160 and planar n=11..13 bounds |
 | notes/literature-2018-2026.md | Literature audit through 2026 |
 | AGENTS.md, CLAUDE.md | Guides for AI agents |
 | .github/ | Pull request template and issue forms |
