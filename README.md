@@ -10,7 +10,7 @@ Part of Foundation0's physics and mathematics work ([physics0](https://github.co
 
 ## Results Table
 
-| Graph | Dimension | Vertices (n) | Complex Count | Certified Real Count | Status | Notes |
+| Graph | Dimension | Vertices (n) | Complex Count | Real count | Status | Notes |
 |---|---|---|---|---|---|---|
 | Prism_6 | 2D | 6 | 24 | 24 (all-real known: Borcea–Streinu 2004) | certificate not yet in repo | New lengths sharing L880's base triangle |
 | L136 | 2D | 8 | 136 | 136 (known: Bartzos et al. 2018) | certificate not yet in repo | New lengths, not Bartzos's |
