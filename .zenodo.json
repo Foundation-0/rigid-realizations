@@ -1,0 +1,27 @@
+{
+    "creators": [
+        {
+            "name": "Arifuddin, Ahraz"
+        }
+    ],
+    "title": "rigid-realizations",
+    "description": "<p>This repository studies how many real realizations minimally rigid graphs can reach in the plane and in space.</p><p>It claims, pending independent verification, a certificate that all 880 realizations of the 10-vertex graph L880 are real (r_2(10) = c_2(10) = 880).</p><p>Committed baseline certificates at Bartzos et al.'s published lengths support r_2 >= 868 in the plane and r_3 >= 132 for G160 in 3D, also pending independent verification.</p><p>Directed by Ahraz Arifuddin</p><p>Researched and verified by different model families across Gemini, Claude, Grok, OpenAI, and Muse</p>",
+    "upload_type": "software",
+    "license": "Apache-2.0",
+    "keywords": [
+        "computer-assisted-proof",
+        "foundation0",
+        "homotopy-continuation",
+        "laman-graphs",
+        "real-algebraic-geometry",
+        "rigidity-theory"
+    ],
+    "related_identifiers": [
+        {
+            "identifier": "https://github.com/Foundation-0/rigid-realizations",
+            "relation": "isSupplementTo",
+            "scheme": "url",
+            "resource_type": "software"
+        }
+    ]
+}
