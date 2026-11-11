@@ -66,8 +66,10 @@ which has two real realizations, (3, 4) and (3, −4) for the third vertex:
 }
 ```
 
-- `lengths[i]` is the length of `edges[i]`, an exact rational written as an integer or as "p/q". The equations then
-  have rational coefficients.
+- `lengths[i]` is the length of `edges[i]`, an exact rational written as a JSON integer, as "p/q", or as a JSON
+  decimal number. Decimal numbers are read from their digits, not from binary floats, so `2.9` means 29/10. The
+  equations then have rational coefficients.
+- Box endpoints follow the same rule: strings, integers, or JSON decimal numbers with exact decimal parsing.
 - `pinned` names the pinned edge in the plane, or the pinned triangle in space, as described above.
 - `unknowns` lists the free coordinates. Each box gives one interval per unknown, in the same order, with rational
   end points.
