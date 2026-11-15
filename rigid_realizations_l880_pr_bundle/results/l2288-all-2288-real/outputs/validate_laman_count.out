@@ -1,0 +1,13 @@
+1. maximal graph, 6 vertices: 24 (expected 24)
+1. maximal graph, 7 vertices: 56 (expected 56)
+1. maximal graph, 8 vertices: 136 (expected 136)
+1. maximal graph, 9 vertices: 344 (expected 344)
+1. maximal graph, 10 vertices: 880 (expected 880)
+1. maximal graph, 11 vertices: 2288 (expected 2288)
+1. maximal graph, 12 vertices: 6180 (expected 6180)
+2. code 4778440734593: 10 vertices, 880 (expected 880)
+2. code 18120782205838348: 11 vertices, 2288 (expected 2288)
+3. graphs built by the simplest step alone give 2^(n-2) for n = 3..10
+4. agrees with verify_capco_laman.compute_c2 on the maximal graphs up to 11 vertices and on 72 random rigid graphs
+5. one bar removed -> error; one bar added -> 0; K4 with a pendant bar -> 0
+ALL CHECKS PASSED
