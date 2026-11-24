@@ -1,0 +1,98 @@
+{
+  "graph": "L880",
+  "dimension": 2,
+  "n": 10,
+  "edges": [
+    [
+      1,
+      4
+    ],
+    [
+      1,
+      8
+    ],
+    [
+      1,
+      10
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      7
+    ],
+    [
+      2,
+      10
+    ],
+    [
+      3,
+      7
+    ],
+    [
+      3,
+      9
+    ],
+    [
+      4,
+      8
+    ],
+    [
+      4,
+      9
+    ],
+    [
+      5,
+      7
+    ],
+    [
+      5,
+      8
+    ],
+    [
+      5,
+      10
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      6,
+      8
+    ],
+    [
+      6,
+      9
+    ],
+    [
+      9,
+      10
+    ]
+  ],
+  "lengths": [
+    "1.0002169",
+    "1.0001366",
+    "1.0004509",
+    "1.000763",
+    "1.0000575",
+    "1.0006078",
+    "1.0001763",
+    "1.00075",
+    "1.0008574",
+    "1.000536",
+    "1.000491",
+    "1.0002946",
+    "1.0006778",
+    "1.0004699",
+    "1.0002724",
+    "1.0005141",
+    "1.0003913"
+  ],
+  "source": "https://arxiv.org/html/1811.12800v1#S4.SS1",
+  "source_section": "4.1, displayed L880 lengths",
+  "transcription_status": "single-agent transcription; independent comparison pending",
+  "interpretation": "printed decimals interpreted as exact rationals; no candidate count reproduced"
+}
