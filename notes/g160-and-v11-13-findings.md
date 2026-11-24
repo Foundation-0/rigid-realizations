@@ -20,3 +20,5 @@
   - Along the near-unit ray (0.002 * delta), numerically (uncertified) 1,582 / 2,288 appear real (with one pair closer than 10^-7).
   - At the well-separated 0.08 shell, numerically (uncertified) 1,404 / 2,288 appear real.
   - Scaling the multi-branch Trust-Region LP solver with higher precision near unit or multi-ray sampling may push beyond 1,760 on n = 11 (speculative).
+
+See also `2026-11-15-l2288-and-12-vertex-results.md`: all 2,288 realizations of the 11-vertex graph are certified real, and the 12-vertex result.

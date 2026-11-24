@@ -19,6 +19,7 @@ The L880 paper in the bundle is reserved on Zenodo at [https://doi.org/10.5281/z
 | L344 | 2D | 9 | 344 | 344 (known: Bartzos et al. 2018) | certificate not yet in repo | Bartzos et al.'s lengths |
 | L880 | 2D | 10 | 880 | 880 | claimed (pending independent verification) | Computer-assisted certificate in bundle; φ_10 = 1 if verified |
 | L880 (Bartzos) | 2D | 10 | 880 | ≥ 868 | claimed (pending independent verification) | Certified lower bound at unmodified Bartzos et al. lengths |
+| L2288 | 2D | 11 | 2288 | 2288 | claimed (VERIFIED by a separately written checker) | Certificate and proof in `rigid_realizations_l880_pr_bundle/results/l2288-all-2288-real/`; growth bound 1144^(1/8) ≈ 2.4116 by gluing along a triangle |
 | G160 | 3D | 8 | 160 | ≥ 132 | claimed (pending independent verification) | Certified lower bound at unmodified Bartzos et al. lengths |
 
 ### Glued Planar Lower Bounds (Claimed)
@@ -72,6 +73,7 @@ python3 -m unittest discover -s rigid_realizations_l880_pr_bundle/tests -v
 | scripts/certify_planar_suite.py | For Prism_6, L136, and L344: verify each `rigid_realizations_l880_pr_bundle/results/{name}_{count}_cert.json` when present; exit nonzero if any expected file is missing, metadata mismatches spec, pin is invalid, or count is partial (does not write JSON; none committed). Override results dir with `PLANAR_SUITE_RESULTS_DIR`. |
 | notes/l880-880-and-868-diagnostics.md | Technical note on L880 parameters, fold walls, and Maple filter analysis |
 | notes/g160-and-v11-13-findings.md | Handoff note for G160 and planar n=11..13 bounds |
+| notes/2026-11-15-l2288-and-12-vertex-results.md | The 11-vertex result (2,288 of 2,288 real), the 12-vertex result, and two gaps in the L880 code |
 | notes/literature-2018-2026.md | Literature audit through 2026 |
 | AGENTS.md, CLAUDE.md | Guides for AI agents |
 | .github/ | Pull request template and issue forms |
